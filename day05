@@ -1,0 +1,311 @@
+//DO THE BELOW PROGRAMS IN ANONYMOUS FUNCITON AND IIFE
+     //a.) print the odd numbers in an array...
+     //anonymous function
+     function foo(arr){
+        var odd=[];
+        for(var i=0;i<arr.length;i++){
+            if(arr[i]%2!==0)
+            odd.push(arr[i]);
+        }
+        return odd;
+     }
+     console.log(foo([12,10,11,7,3,5]));
+
+     //IIFE
+     (function foo(arr){
+        var odd=[];
+        for(var i=0;i<arr.length;i++){
+            if(arr[i]%2!==0)
+            odd.push(arr[i]);
+        }
+     })([12,10,11,7,3,5]);
+     //b.)convert all the strings to title cap in a string array
+     //anonymous function
+     function titleCase(str) {
+        str = str.toLowerCase().split(' ');
+        for (var i = 0; i < str.length; i++) {
+            str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+        }
+        return str.join(' ');
+        }
+        console.log(titleCase("MY NAME IS KANNADASAN"));
+     //IIFE
+        (function titleCase(str) {
+            str = str.toLowerCase().split(' ');
+            for (var i = 0; i < str.length; i++) {
+                str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+            }
+            return str.join(' ');
+            })("MY NAME IS KANNADASAN");
+
+     //c.)Sum of all numbers in an array
+     //anonymous function
+     function sum(array){
+        var sum = 0;
+        for(var i = 0 ; i< array.length ; i++){
+          sum = sum+array[i];
+        }
+        return sum;
+      }
+      console.log(sum([1,2,3,4,5,6,7]));
+      //IIFE
+      (function sum(array){
+        var sum = 0;
+        for(var i = 0 ; i< array.length ; i++){
+          sum = sum+array[i];
+        }
+        return sum;
+      }([1,2,3,4,5,6,7]));
+
+      //d.)Return all the prime numbers in an array
+      //anonymous
+      function primenumber(numArray){
+        numArray = numArray.filter((number) => {
+            for (var i = 2; i <= Math.sqrt(number); i++) {
+                if (number % i === 0) return false;
+            }
+            return true;
+        });
+        console.log(numArray);
+    }
+    console.log(primenumber([2,3,4,5,6,7,8,9,10,11,12,13]));
+        //IIFE
+        (function primenumber(numArray){
+            numArray = numArray.filter((number) => {
+                for (var i = 2; i <= Math.sqrt(number); i++) {
+                    if (number % i === 0) return false;
+                }
+                return true;
+            });
+            console.log(numArray);
+        }([2,3,4,5,6,7,8,9,10,11,12,13]));
+      //e.)Return all the palindromes in an array
+      //anonymous
+      function isPalindrome(N)
+      {
+          var str = "" + N;
+          var len = str.length;
+          for (var i = 0; i < parseInt(len / 2, 10); i++)
+          {
+              if (str[i] != str[len - 1 - i ])
+                  return false;
+          }
+          return true;
+      }
+      
+         function isPalindrome(arr, n)
+      {
+                 for (var i = 0; i < n; i++)
+          {
+              var ans = isPalindrome(arr[i]);
+              if (ans == false)
+                  return false;
+          }
+          return true;
+      }
+       
+      var arr = [ 121, 131, 111];  
+      var n = arr.length;
+      var res = isPalindrome(arr, n);
+      if (res == true)
+         console.log("Array is a Palindrome");
+      else
+          console.log("Array is not a Palindrome");
+
+      //IIFE
+      function isPalindrome(N)
+      {
+          var str = "" + N;
+          var len = str.length;
+          for (var i = 0; i < parseInt(len / 2, 10); i++)
+          {
+              if (str[i] != str[len - 1 - i ])
+                  return false;
+          }
+          return true;
+      }
+   
+         function isPalindrome(arr, n)
+      {
+                 for (var i = 0; i < n; i++)
+          {
+              var ans = isPalindrome(arr[i]);
+              if (ans == false)
+                  return false;
+          }
+          return true;
+      }
+       
+      
+      var res = isPalindrome(arr, n);
+      if (res == true)
+         console.log("Array is a Palindrome");
+      else
+          console.log("Array is not a Palindrome");
+          var arr = [ 121, 131, 111 ];  
+      var n = arr.length;
+      isPalindrome(arr,n);
+         
+      //f.) Return median of two sorted arrays of the same size
+      //anonymous
+        var arr1=[1,4,6];
+        var arr2=[1,6,8];
+        var median=function(arr1,arr2){
+            var arr=[...arr1,...arr2];
+            var final=arr.sort();
+            var id=final.length/2;
+            var out=(final[id]+final[id-1])/2;
+            return out;
+        }
+        console.log(median(arr1,arr2));
+        //IIFE
+        var arr1=[1,4,6];
+        var arr2=[1,6,8];
+        (function(arr1,arr2){
+            var arr=[...arr1,...arr2];
+            var final=arr.sort();
+            var id=final.length/2;
+            var out=(final[id]+final[id-1])/2;
+            return out;
+        })(arr1,arr2);
+     
+      //g.)Remove duplicates from an array
+      //anonymous
+      function dup(array){
+        var dup = [...new Set(array)];
+        return dup;
+        }
+        console.log(dup([2,2,3,3,4,5,6,6,7,8,9,9]));
+       //IIFE
+       (function(array){
+        var dup = [...new Set(array)];
+        console.log(dup);
+          })([1,1,2,2,3,3,4,5,5]);
+      //h.)Rotate an array by k times
+      //anonymous
+      function rotate(a,k){
+        var n=a.length;
+      var c=[];
+      var  d="";
+       for(var i=0;i<n;i++)
+       {
+           c[(i+k)%(n)]=a[i]
+       }
+       for(i=0;i<c.length-1;i++)
+       {
+           d+=c[i]+" "
+       }
+       d+=c[c.length-1]
+       return d;
+     }
+     console.log(rotate([1,2,3,4,5],2))
+     //IIFE
+     (function rotate(a,k){
+        var n=a.length;
+      var c=[];
+      var  d="";
+       for(var i=0;i<n;i++)
+       {
+           c[(i+k)%(n)]=a[i]
+       }
+       for(i=0;i<c.length-1;i++)
+       {
+           d+=c[i]+" "
+       }
+       d+=c[c.length-1]
+       console.log(d);
+     })([1,2,3,4,5],3);
+
+ //3.)Do the below programs in arrow functions.
+     //a.)Print odd numbers in an array
+     //arrow
+     var oddnumbers=(arr)=>{
+        var odd=[];
+        for(var i=0;i<arr.length;i++){
+            if(arr[i]%2!==0)
+            odd.push(arr[i]);
+        }
+        return odd;
+     }
+     console.log(oddnumbers([12,10,11,7,3,5]));
+    //b.)Convert all the strings to title caps in a string array
+     //arrow
+     var titleCase=(str)=> {
+        str = str.toLowerCase().split(' ');
+        for (var i = 0; i < str.length; i++) {
+            str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+        }
+        return str.join(' ');
+        }
+        console.log(titleCase("MY NAME IS KANNADASAN"));
+    //c.)Sum of all numbers in an array
+    //arrow
+    var sum=(array)=>{
+        var sum = 0;
+        for(var i = 0 ; i< array.length ; i++){
+          sum = sum+array[i];
+        }
+        return sum;
+      }
+      console.log(sum([1,2,3,4,5,6,7]));
+    //d.)Return all the prime numbers in an array
+     //arrow
+     var primenumber=(numArray)=>{
+        numArray = numArray.filter((number) => {
+            for (var i = 2; i <= Math.sqrt(number); i++) {
+                if (number % i === 0) return false;
+            }
+            return true;
+        });
+        console.log(numArray);
+    }
+    console.log(primenumber([2,3,4,5,6,7,8,9,10,11,12,13]));
+    //e.)Return all the palindromes in an array
+     //arrow
+     var isPalindrome=(N)=>
+     {
+         var str = "" + N;
+         var len = str.length;
+         for (var i = 0; i < parseInt(len / 2, 10); i++)
+         {
+             if (str[i] != str[len - 1 - i ])
+                 return false;
+         }
+         return true;
+     }
+     
+       var isPalindrome=(arr, n)=>
+     {
+                for (var i = 0; i < n; i++)
+         {
+             var ans = isPalindrome(arr[i]);
+             if (ans == false)
+                 return false;
+         }
+         return true;
+     }
+      
+     var arr = [ 121, 131, 111];  
+     var n = arr.length;
+     var res = isPalindrome(arr, n);
+     if (res == true)
+        console.log("Array is a Palindrome");
+     else
+         console.log("Array is not a Palindrome");
+       
+       
+      
+    
+
+
+
+  
+
+      
+
+
+
+
+
+
+
